@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 1: Transformers | Understanding &amp; Using GenAI</title>
+<meta name="description" content="AI education modules for UT Austin iSchool undergraduates: understanding and critically using generative AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="index.html"><span class="brand-mark">AI</span>Understanding &amp; Using GenAI</a>
+  <nav class="nav"><a href="index.html#home" class="">Home</a><a href="index.html#about" class="">About</a><a href="index.html#modules" class="active">Modules</a><a href="index.html#resources" class="">Resources</a></nav>
+</div></header>
+
+<section class="mhero"><div class="wrap narrow">
+  <div class="crumb"><a href="index.html">Home</a> / <a href="index.html#modules">Modules</a> / Module 1</div>
+  <p class="eyebrow">Module 1 of 6</p>
+  <h1>Transformers and Language Models</h1>
+  <p>Tokens, attention, and context: why the words around a word change its meaning, and why your prompt shapes the output.</p>
+  <div class="meta"><span>⏱ <b>≈ 2.5 min</b> in lecture</span><span class="tags"><span class="tag">Concepts</span><span class="tag">Video</span></span></div>
+</div></section>
+<main class="content"><div class="wrap narrow">
+<div class="card "><h2><span class="ico">🎯</span>Learning goals</h2><ul class="goals">
+<li>Explain tokens, numerical representations, and attention in plain language.</li>
+<li>Use an example to show how context changes a word's meaning for a model.</li>
+<li>Connect “one token at a time” generation to why prompts matter.</li></ul></div><div class="card "><h2><span class="ico">⚙️</span>What is a transformer?</h2><p>A <b>transformer</b> is a neural-network architecture used in many language models. Text enters the model as <b>tokens</b>, which can be words or parts of words. The model represents these tokens numerically. An <b>attention mechanism</b> allows it to combine information from different positions in the text, building representations that depend on context.</p>
+<blockquote>Attention is a mathematical operation, not attention in the human sense.</blockquote></div><div class="card "><h2><span class="ico">🏦</span>Context changes meaning</h2><p>Choose a sentence to see how the surrounding words disambiguate <b>bank</b>.</p>
+<div class="quote" style="font-size:20px" id="bankS">“She <span class="blank">____</span> bank.”</div>
+<div class="choices">
+<button class="choice" data-s="deposited money at the" data-m="a financial institution">Deposited money…</button>
+<button class="choice" data-s="sat beside the river" data-m="the land along a river">Sat beside the river…</button></div>
+<p id="bankM" style="color:var(--muted)">Pick a sentence.</p>
+<script>
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('[data-s]').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');
+ document.getElementById('bankS').innerHTML='“She <span class="blank">'+b.dataset.s+'</span> bank.”';
+ document.getElementById('bankM').innerHTML='Words such as <b>'+b.dataset.s.split(' ').slice(0,2).join(' ')+'…</b> pull the representation of “bank” toward <b>'+b.dataset.m+'</b>.';
+});
+</script></div><div class="card "><h2><span class="ico">➡️</span>Generating a response</h2><p>In a typical text-generating LLM, the system produces a continuation <b>one token at a time</b>. Your prompt supplies part of the context that shapes that continuation. Changing the task description, examples, or source material can therefore change the response.</p></div><div class="card discuss"><h2><span class="ico">💬</span>Think about it</h2><p>If changing the context changes the output, what information should you include when asking for help with a course assignment?</p>
+<details><summary>Some possible answers</summary><p>The assignment's actual question and instructions, the intended audience, the required length or format, the relevant course reading, and what you have already tried.</p></details></div><div class="card "><h2><span class="ico">🔗</span>Resources</h2><ul class="res"><li><a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" rel="noopener">Intro to Large Language Models (video) ↗</a><small>A broader introduction to LLMs for viewing after class, rather than a short transformer tutorial.</small></li><li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Vaswani et al. (2017). Attention Is All You Need ↗</a><small>The paper that introduced the original transformer architecture. Advances in Neural Information Processing Systems, 30.</small></li></ul></div>
+<div class="pager"><a href="module0-nlp.html"><small>← Module 0</small>NLP Foundations</a><a class="next" href="module2-prompting.html"><small>Module 2 →</small>Prompting Techniques</a></div>
+</div></main>
+<footer><div class="wrap">
+  <div><b>Understanding &amp; Using GenAI: Resources for Critical Practice</b></div>
+  <div>AI education modules for I301 · School of Information, The University of Texas at Austin.</div>
+  <div style="margin-top:6px">External resources are linked for educational use; tool availability was checked September 30, 2026 and may change.</div>
+</div></footer>
+</body></html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 6: Academic Integrity | Understanding &amp; Using GenAI</title>
+<meta name="description" content="AI education modules for UT Austin iSchool undergraduates: understanding and critically using generative AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="index.html"><span class="brand-mark">AI</span>Understanding &amp; Using GenAI</a>
+  <nav class="nav"><a href="index.html#home" class="">Home</a><a href="index.html#about" class="">About</a><a href="index.html#modules" class="active">Modules</a><a href="index.html#resources" class="">Resources</a></nav>
+</div></header>
+
+<section class="mhero"><div class="wrap narrow">
+  <div class="crumb"><a href="index.html">Home</a> / <a href="index.html#modules">Modules</a> / Module 6</div>
+  <p class="eyebrow">Module 6 of 6</p>
+  <h1>Intellectual Contribution and Attribution</h1>
+  <p>Separating your own analysis from AI assistance, and writing a disclosure that says what actually happened.</p>
+  <div class="meta"><span>⏱ <b>≈ 3 min</b> in lecture</span><span class="tags"><span class="tag">Ethics</span><span class="tag">Attribution</span></span></div>
+</div></section>
+<main class="content"><div class="wrap narrow">
+<div class="card "><h2><span class="ico">🎯</span>Learning goals</h2><ul class="goals">
+<li>Distinguish intellectual contribution from attribution.</li>
+<li>Explain why “I used AI” is not an adequate disclosure.</li>
+<li>Write an accurate disclosure of your own process.</li></ul></div><div class="card "><h2><span class="ico">📖</span>Key reading</h2><p>In “Plagiarism, Copyright, and AI,” Mark A. Lemley and Lisa Larrimore Ouellette distinguish copyright questions from academic attribution and integrity. They argue that a general statement such as “I used AI” does not adequately explain which ideas or passages came from AI and which contributions came from the student. They also emphasize checking underlying sources.</p></div><div class="card "><h2><span class="ico">🧭</span>Two questions to keep separate</h2><div class="cols">
+<div class="quote" style="margin:0"><b>Intellectual contribution</b><br>What analysis, interpretation, or judgment did <i>you</i> contribute?</div>
+<div class="quote" style="margin:0"><b>Attribution</b><br>Have you made clear where borrowed ideas, wording, and AI assistance entered the work?</div></div>
+<p style="margin-top:16px">Follow the course's rules about permitted AI use and disclosure. Adding your own analysis does not remove the need to credit others. Disclosing AI use does not automatically make every use permissible.</p></div><div class="card "><h2><span class="ico">✍️</span>Build your disclosure</h2><p>An illustrative example. Adapt it only if it accurately describes your process.</p>
+<div class="quote">I used [tool/model, date] to generate an initial explanation. I checked its claims against the assigned reading and identified an unsupported generalization. I revised the prompt to request evidence and limitations. The comparison and final evaluation are my own.</div>
+<div class="field"><label for="dTool">Tool / model and date</label><input type="text" id="dTool" placeholder="e.g., Claude EDU (model name), Nov 19, 2026"></div>
+<div class="field"><label for="dUse">What the AI produced</label><input type="text" id="dUse" placeholder="e.g., an initial explanation of misinformation"></div>
+<div class="field"><label for="dCheck">How you checked it</label><input type="text" id="dCheck" placeholder="e.g., checked its claims against the assigned reading and found an unsupported generalization"></div>
+<div class="field"><label for="dRev">How you revised</label><input type="text" id="dRev" placeholder="e.g., revised the prompt to request evidence and limitations"></div>
+<div class="field"><label for="dOwn">What is your own work</label><input type="text" id="dOwn" placeholder="e.g., the comparison and final evaluation"></div>
+<p class="label">Your disclosure</p><div class="prompt" id="dOut">Fill in the fields above.</div>
+<script>
+const ids=['dTool','dUse','dCheck','dRev','dOwn'];
+function upd(){const v=ids.map(i=>document.getElementById(i).value.trim());
+ if(!v.some(Boolean)){document.getElementById('dOut').textContent='Fill in the fields above.';return;}
+ const f=(x,p)=>x||p;
+ document.getElementById('dOut').textContent=`I used ${f(v[0],'[tool/model, date]')} to generate ${f(v[1],'[what it produced]')}. I ${f(v[2],'[how you checked it]')}. I ${f(v[3],'[how you revised]')}. ${f(v[4],'[your contribution]').replace(/^./,c=>c.toUpperCase())} ${/ and |s$/.test(v[4])?'are':'is'} my own.`;}
+ids.forEach(i=>document.getElementById(i).addEventListener('input',upd));
+</script></div><div class="card discuss"><h2><span class="ico">🎟️</span>Exit ticket</h2><p>Name:</p><ol class="steps"><li>One <b>resource</b> you would use</li><li>One <b>criterion</b> you would apply to an AI response</li><li>One <b>intellectual contribution</b> you would make to your critique</li></ol>
+<blockquote>In your AI critique, show the reasoning behind your decisions. Explain what you accepted, what you challenged, how you tested a revision, and what limitations remain.</blockquote></div><div class="card "><h2><span class="ico">🔗</span>Resources</h2><ul class="res"><li><a href="https://lawreview.uchicago.edu/online-archive/plagiarism-copyright-and-ai" target="_blank" rel="noopener">Lemley &amp; Ouellette: Plagiarism, Copyright, and AI ↗</a><small>University of Chicago Law Review Online.</small></li></ul></div>
+<div class="pager"><a href="module5-tools.html"><small>← Module 5</small>UT Tools & Models</a><a class="next" href="index.html#modules"><small>Finished →</small>Back to all modules</a></div>
+</div></main>
+<footer><div class="wrap">
+  <div><b>Understanding &amp; Using GenAI: Resources for Critical Practice</b></div>
+  <div>AI education modules for I301 · School of Information, The University of Texas at Austin.</div>
+  <div style="margin-top:6px">External resources are linked for educational use; tool availability was checked September 30, 2026 and may change.</div>
+</div></footer>
+</body></html>

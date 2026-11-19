@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 0: NLP Foundations | Understanding &amp; Using GenAI</title>
+<meta name="description" content="AI education modules for UT Austin iSchool undergraduates: understanding and critically using generative AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="index.html"><span class="brand-mark">AI</span>Understanding &amp; Using GenAI</a>
+  <nav class="nav"><a href="index.html#home" class="">Home</a><a href="index.html#about" class="">About</a><a href="index.html#modules" class="active">Modules</a><a href="index.html#resources" class="">Resources</a></nav>
+</div></header>
+
+<section class="mhero"><div class="wrap narrow">
+  <div class="crumb"><a href="index.html">Home</a> / <a href="index.html#modules">Modules</a> / Module 0</div>
+  <p class="eyebrow">Module 0 of 6</p>
+  <h1>Natural Language Processing: Next-Word Prediction</h1>
+  <p>How language models began: predicting the next word from patterns in text, from n-gram counts to neural networks.</p>
+  <div class="meta"><span>⏱ <b>Pre-class</b> in lecture</span><span class="tags"><span class="tag">Concepts</span><span class="tag">Warm-up</span></span></div>
+</div></section>
+<main class="content"><div class="wrap narrow">
+<div class="card "><h2><span class="ico">🎯</span>Learning goals</h2><ul class="goals">
+<li>Describe a language model as a system that predicts the next word (token) from context.</li>
+<li>Contrast a statistical n-gram model with a neural approach such as an RNN.</li>
+<li>Recognize that predictions reflect the data a model was trained on.</li></ul></div><div class="card "><h2><span class="ico">🧩</span>Try it: fill in the blank</h2><p>Before reading further, make your own prediction.</p>
+<div class="quote" style="font-size:20px">“I am going to reply to the <span class="blank" id="blank">____</span>”</div>
+<div class="choices" id="choices">
+<button class="choice" data-w="email">email</button><button class="choice" data-w="message">message</button>
+<button class="choice" data-w="comment">comment</button><button class="choice" data-w="question">question</button>
+<button class="choice" data-w="letter">letter</button></div>
+<div id="dist" hidden>
+<p class="label">An illustrative probability distribution a model might assign based on its dataset</p>
+<div class="bar"><span class="w">email</span><span class="track"><span class="fill" data-t="email" style="width:46%"></span></span><span class="pct" data-t="email">46%</span></div>
+<div class="bar"><span class="w">message</span><span class="track"><span class="fill" data-t="message" style="width:22%"></span></span><span class="pct" data-t="message">22%</span></div>
+<div class="bar"><span class="w">comment</span><span class="track"><span class="fill" data-t="comment" style="width:14%"></span></span><span class="pct" data-t="comment">14%</span></div>
+<div class="bar"><span class="w">question</span><span class="track"><span class="fill" data-t="question" style="width:11%"></span></span><span class="pct" data-t="question">11%</span></div>
+<div class="bar"><span class="w">letter</span><span class="track"><span class="fill" data-t="letter" style="width:7%"></span></span><span class="pct" data-t="letter">7%</span></div>
+<p style="color:var(--muted);font-size:14px">These numbers are invented for teaching. A real model scores every token in its vocabulary; the top choice is often, but not always, the one it outputs. Each choice shows a different hypothetical dataset in which that word most often follows “reply to the.”</p>
+</div>
+<script>
+const DIST={
+  email:   {email:46, message:22, comment:14, question:11, letter:7},
+  message: {message:44, email:24, comment:15, question:10, letter:7},
+  comment: {comment:41, message:21, email:18, question:13, letter:7},
+  question:{question:43, email:20, message:17, comment:12, letter:8},
+  letter:  {letter:39, email:23, message:18, question:12, comment:8}
+};
+document.querySelectorAll('#choices .choice').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#choices .choice').forEach(x=>x.classList.remove('sel'));
+  b.classList.add('sel'); document.getElementById('blank').textContent=b.dataset.w;
+  const d=document.getElementById('dist'); d.hidden=false; const p=DIST[b.dataset.w];
+  d.querySelectorAll('.fill').forEach(f=>{f.style.width='0';setTimeout(()=>f.style.width=p[f.dataset.t]+'%',30)});
+  d.querySelectorAll('.pct').forEach(s=>s.textContent=p[s.dataset.t]+'%');
+});
+</script></div><div class="card "><h2><span class="ico">📚</span>Two ways to predict “email”</h2><div class="cols">
+<div><h3 style="margin-top:0">Statistical n-gram model</h3><p>Counts how often “email” follows “reply to the” in a training corpus (for example, one available through NLTK), then picks the most frequent continuation. Simple and transparent, but it only sees a few words back.</p></div>
+<div><h3 style="margin-top:0">Recurrent neural network (RNN)</h3><p>Learns patterns from training on sequential data, such as messaging datasets. It carries a running representation of earlier words, so it can use longer context than a fixed n-gram window.</p></div>
+</div>
+<p>Modern large language models keep the same basic goal, predicting what comes next, but use a different architecture: the <a href="module1-transformers.html">transformer</a>.</p></div><div class="card discuss"><h2><span class="ico">💬</span>Think about it</h2><p>If a model's prediction depends on how often words appeared together in its training data, whose language and whose situations are most likely to be represented well? Which might be missing?</p></div>
+<div class="pager"><a href="index.html#modules"><small>← Back</small>All modules</a><a class="next" href="module1-transformers.html"><small>Module 1 →</small>Transformers</a></div>
+</div></main>
+<footer><div class="wrap">
+  <div><b>Understanding &amp; Using GenAI: Resources for Critical Practice</b></div>
+  <div>AI education modules for I301 · School of Information, The University of Texas at Austin.</div>
+  <div style="margin-top:6px">External resources are linked for educational use; tool availability was checked September 30, 2026 and may change.</div>
+</div></footer>
+</body></html>
